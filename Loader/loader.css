@@ -1,0 +1,38 @@
+body{
+			margin:0;
+			overflow: hidden;
+			font-size:0;
+		}
+		canvas{
+			background: black;
+			width: 102vw;
+			height: 110vh;
+		}
+		input{
+			width: 4px;
+			height: 4px;
+			line-height: 4px;
+			position: absolute;
+			bottom:4px;
+			left: calc(50% - 125px);
+			background: none;
+			color: white;
+			font-size: 4px;
+			font-family: arial;
+			text-align: center;
+			border: 4px solid black;
+			background: rgba(255,255,255,0.2);
+		}
+p{
+  position: fixed;
+  left: 0;
+  bottom:5px;
+  color: #fff;
+  z-index:10;
+  font-size:16px;
+  font-family: Helvetica, Verdana, sans-serif;
+  opacity:0.5;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}

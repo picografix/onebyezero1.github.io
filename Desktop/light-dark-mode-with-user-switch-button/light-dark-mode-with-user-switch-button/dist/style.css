@@ -1,0 +1,106 @@
+/* Global styling is in the HTML so I can include this CSS into other CodePen projects */
+body {
+  --color: hsl(269, 19%, 30%);
+  --bgColor: hsla(32,100%,85%,.35);
+  --linkColor: hsla(214, 71%, 47%, 1);
+  --linkColorHover: hsla(214, 100%, 35%, 1);
+  --linkBgHover: hsla(214, 100%, 85%, 1);
+  --linkFocus: hsla(214, 71%, 80%, 0.3);
+  --focusOutline: var(--linkFocus) solid 0.25rem;
+  --imgFilter: none;
+  --bgPage: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect filter='url(%23a)' opacity='.3' width='100%25' height='100%25'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark) {
+  body:not([data-lightMode="light"]) {
+    --color: #fafafa;
+    --bgColor: hsl(269, 19%, 5%);
+    --linkColor: hsla(214, 100%, 80%, 1);
+    --linkColorHover: hsla(214, 100%, 11%, 1);
+    --linkFocus: hsla(214, 100%, 80%, .5);
+    --focusOutline: hsla(214, 100%, 85%, .6) solid .25rem;
+    --imgFilter: grayscale(15%) brightness(85%);
+    --bgPage: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7'/%3E%3C/filter%3E%3C/defs%3E%3Crect filter='url(%23a)' opacity='.3' width='100%25' height='100%25'/%3E%3C/svg%3E");
+  }
+}
+/* Duplicated dark mode for button action */
+body[data-lightMode="dark"] {
+  --color: #fff;
+  --bgColor: hsl(269, 19%, 5%);
+  --linkColor: hsla(214, 100%, 80%, 1);
+  --linkColorHover: hsla(214, 100%, 11%, 1);
+  --linkFocus: hsla(214, 100%, 80%, .6);
+  --focusOutline: hsla(214, 100%, 85%, .6) solid .25rem;
+  --imgFilter: grayscale(15%) brightness(85%);
+  --bgPage: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7'/%3E%3C/filter%3E%3C/defs%3E%3Crect filter='url(%23a)' opacity='.3' width='100%25' height='100%25'/%3E%3C/svg%3E");
+}
+
+body {
+  color: var(--color);
+  background-color: var(--bgColor);
+  background-image: var(--bgPage);
+  transition: 
+    background-image .3s ease-out,
+    background-color .3s ease-out,
+    color .3s ease-out;
+}
+
+img:not([src*=".svg"]) {
+  filter: var(--imgFilter);
+  transition: filter 0.3s ease-out;
+}
+
+a:link,
+a:visited {
+  color: var(--linkColor);
+  text-decoration-color: var(--linkColorUnderline);
+  outline: hsla(214, 71%, 80%, 0); solid .25rem;
+  transition:
+    color .3s ease-out,
+    background-color .3s ease-out,
+    outline-color .3s ease-out;
+}
+a:hover,
+a:focus {
+  color: var(--linkColorHover);
+  outline: var(--linkBgHover) solid .25rem;
+  background-color: var(--linkBgHover);
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+.actions_btn-mode {
+  --fromEdge: .5rem;
+  position: fixed;
+  z-index: 5;
+  top: var(--fromEdge);
+  right: var(--fromEdge);
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
+}
+@media (min-width: 768px) {
+  .actions_btn-mode {
+    --fromEdge: 1.5rem;
+  }
+}
+
+/* Switch icon between dark &amp; light */
+.actions_svg-mode > * {
+  transition: opacity .3s ease-out;
+}
+[data-lightMode="light"] .mode-dark,
+[data-lightMode="dark"] .mode-light {
+  opacity: 1;
+}
+[data-lightMode="light"] .mode-light,
+[data-lightMode="dark"] .mode-dark {
+  opacity: 0;
+}
+
+/* 
+   Includes used:
+   Prism highlighting: https://codepen.io/2kool2/pen/MEbeEg
+*/
